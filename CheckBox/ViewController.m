@@ -47,8 +47,10 @@
     if(checkBoxSelected)
     {
         NSLog(@"Selected");
+        _sampleLabel.text = @"checked";
     }else{
         NSLog(@" Not Selected");
+        _sampleLabel.text = @"Unchecked";
     }
     
 }
