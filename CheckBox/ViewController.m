@@ -9,6 +9,16 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+{
+    
+      BOOL checkBoxSelected;
+}
+
+
+@property (weak, nonatomic) IBOutlet UIButton *checkbox;
+
+@property (weak, nonatomic) IBOutlet UILabel *sampleLabel;
+
 
 @end
 
@@ -17,8 +27,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    [_checkbox setBackgroundImage:[UIImage imageNamed:@"uncheck"]
+                         forState:UIControlStateNormal];
+    [_checkbox setBackgroundImage:[UIImage imageNamed:@"check"]
+                         forState:UIControlStateSelected];
+    [_checkbox setBackgroundImage:[UIImage imageNamed:@"check"]
+                         forState:UIControlStateHighlighted];
+    _checkbox.adjustsImageWhenHighlighted=YES;
+    [_checkbox addTarget:self action:@selector(testMethod) forControlEvents:UIControlEventTouchDown];
+    
 }
 
+-(void)testMethod{
+    
+    checkBoxSelected = !checkBoxSelected; /* Toggle */
+    [_checkbox setSelected:checkBoxSelected];
+    
+    if(checkBoxSelected)
+    {
+        NSLog(@"Selected");
+    }else{
+        NSLog(@" Not Selected");
+    }
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
